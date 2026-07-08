@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide interactif — Évaluations authentiques à l'ère de l'IA</title>
+<style>
+@font-face {
+  font-family: 'Modern Gothic';
+  src: local('Modern Gothic'), local('Modern Gothic Regular'),
+       url('https://dam.lcieducation.com/1fipm6Snk5jh2rLnFu4uq2hg8_sNzVmOTU5OWM0YzA4MDQ5/ModernGothic-Regular.woff2') format('woff2');
+  font-weight: 400; font-display: swap;
+}
+@font-face {
+  font-family: 'Modern Gothic';
+  src: local('Modern Gothic Medium'),
+       url('https://dam.lcieducation.com/1fidCrXy5z5kbAmnhACmEhth5_sYWE3Njc1ZTY2OGYwM2E1/ModernGothic-Medium.woff2') format('woff2');
+  font-weight: 500; font-display: swap;
+}
+@font-face {
+  font-family: 'Modern Gothic';
+  src: local('Modern Gothic Bold'),
+       url('https://dam.lcieducation.com/1fihEASn3qmjdpL2S77vCoz7w_sOWYzOTAxMGM2OTk3OTI5/ModernGothic-Bold.woff2') format('woff2');
+  font-weight: 700; font-display: swap;
+}
+
+:root{
+  --color-blue-500:#00587c; --color-blue-600:#00435e; --color-blue-50:#e0ebef; --color-blue-100:#b8d0da;
+  --color-red-500:#eb2d37; --color-red-700:#993030;
+  --color-cream-500:#f8f5e9; --color-cream-300:#fbf9f1; --color-cream-700:#c7c4ba;
+  --color-charcoal-900:#07181e; --color-charcoal-700:#2a3438; --color-charcoal-500:#424f54; --color-charcoal-400:#576266; --color-charcoal-300:#6d7478; --color-charcoal-100:#babfc0; --color-charcoal-50:#e1e3e4;
+  --color-white:#ffffff;
+  --color-lilac:#d485fa; --color-taupe:#cdc19e; --color-cobalt:#685ef7; --color-gold:#cc9f11;
+  --color-canary:#f2f537; --color-chlorophyll:#5b8000; --color-orange:#fe6c06; --color-aqua:#9cf6d4;
+  --ease-expressive:cubic-bezier(.4,.14,.3,1);
+  --ease-productive:cubic-bezier(.2,0,.38,.9);
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:'Modern Gothic', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color:var(--color-charcoal-900);
+  background:var(--color-cream-500);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{
+  font-family:'Modern Gothic', system-ui, sans-serif;
+  font-weight:400; letter-spacing:-0.02em; line-height:1.05; margin:0;
+}
+p{line-height:1.55; margin:0;}
+button{font-family:inherit;}
+:focus-visible{outline:2px solid var(--color-blue-500); outline-offset:2px;}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+}
+
+/* ---------- header ---------- */
+.site-header{
+  position:sticky; top:0; z-index:60;
+  background:var(--color-charcoal-900); color:#fff;
+  padding:14px clamp(16px,4vw,48px);
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  box-shadow:0 2px 16px rgba(0,0,0,.18);
+}
+.brand{display:flex; align-items:center; gap:12px;}
+.brand-mark{width:38px; height:38px; flex:0 0 auto; background:var(--color-red-500); border-radius:50% 50% 50% 8px; position:relative;}
+.brand-mark::after{content:''; position:absolute; inset:9px; background:var(--color-cream-500); border-radius:50% 50% 50% 6px;}
+.header-tag{font-size:12px; padding:6px 14px; border-radius:999px; background:rgba(248,245,233,.1); border:1px solid rgba(248,245,233,.25); display:none;}
+@media (min-width:700px){ .header-tag{display:inline-flex; align-items:center; gap:6px;} }
+
+/* ---------- hero ---------- */
+.hero{position:relative; overflow:hidden; background:var(--color-cream-500); padding:clamp(36px,6vw,64px) clamp(16px,6vw,64px) clamp(28px,4vw,40px);}
+.hero-inner{position:relative; z-index:1; max-width:820px; margin:0 auto;}
+.eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--color-blue-500); margin-bottom:14px;}
+.eyebrow::before{content:''; width:8px; height:8px; border-radius:50%; background:var(--color-red-500); display:inline-block;}
+.hero h1{font-size:clamp(28px,3.6vw,42px); color:var(--color-charcoal-900); max-width:20ch; margin-bottom:14px;}
+.hero p.lead{font-size:clamp(15px,1.3vw,17px); color:var(--color-charcoal-500); max-width:70ch; margin-bottom:8px;}
+.hero-stats{display:flex; flex-wrap:wrap; gap:12px; margin-top:20px;}
+.stat-pill{background:var(--color-white); border:1px solid var(--color-cream-700); border-radius:14px; padding:10px 18px; min-width:110px; box-shadow:0 2px 10px rgba(7,24,30,.05);}
+.stat-pill b{display:block; font-size:22px; color:var(--color-blue-500); font-weight:700; letter-spacing:-0.02em;}
+.stat-pill span{font-size:12px; color:var(--color-charcoal-400);}
+.scroll-cue{display:flex; align-items:center; gap:8px; margin-top:26px; color:var(--color-charcoal-400); font-size:12.5px; font-weight:500;}
+.scroll-cue svg{animation:bob 1.6s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
+
+/* ---------- controls ---------- */
+.controls-bar{
+  position:sticky; top:66px; z-index:55;
+  background:rgba(248,245,233,.94); backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--color-cream-700);
+  padding:12px clamp(16px,6vw,64px);
+  display:flex; flex-wrap:wrap; align-items:center; gap:12px; justify-content:center;
+}
+.controls-inner{width:100%; max-width:900px; display:flex; flex-wrap:wrap; align-items:center; gap:12px; justify-content:space-between;}
+.search-wrap{
+  flex:1 1 320px; max-width:520px;
+  display:flex; align-items:center; gap:10px;
+  background:var(--color-white); border:1.5px solid var(--color-cream-700); border-radius:12px;
+  padding:9px 14px;
+  transition:border-color .12s var(--ease-productive);
+}
+.search-wrap:focus-within{border-color:var(--color-blue-500);}
+.search-wrap svg{flex:0 0 auto; opacity:.55;}
+.search-wrap input{border:none; outline:none; flex:1; font-size:14.5px; background:transparent; color:var(--color-charcoal-900); font-family:inherit;}
+.search-wrap input::placeholder{color:var(--color-charcoal-300);}
+.ctrl-buttons{display:flex; gap:8px; flex:0 0 auto;}
+.ctrl-btn{
+  border:1.5px solid var(--color-cream-700); background:var(--color-white); color:var(--color-charcoal-700);
+  border-radius:10px; padding:9px 14px; font-size:13px; font-weight:500; cursor:pointer;
+  transition:all .15s var(--ease-productive); white-space:nowrap;
+}
+.ctrl-btn:hover{border-color:var(--color-blue-500); color:var(--color-blue-500); transform:translateY(-1px);}
+.hint{
+  width:100%; max-width:900px; text-align:center; font-size:12.5px; color:var(--color-charcoal-400);
+  padding-top:2px; margin:0 auto;
+}
+
+.no-match-banner{
+  max-width:900px; margin:14px auto 0; text-align:center; padding:10px; padding-left:16px; padding-right:16px;
+  background:var(--color-white); border:1px solid var(--color-cream-700); border-radius:10px;
+  font-size:13px; color:var(--color-charcoal-400); display:none;
+}
+.no-match-banner.show{display:block;}
+
+/* ---------- vertical strategy list ---------- */
+main{padding:28px clamp(16px,6vw,64px) 60px;}
+.strategies-list{max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:14px;}
+
+.strategy-card{
+  border-radius:16px; overflow:hidden; background:var(--color-white);
+  box-shadow:0 2px 12px rgba(7,24,30,.07);
+  transition:opacity .2s, filter .2s, box-shadow .2s;
+  scroll-margin-top:150px;
+}
+.strategy-card.dim{opacity:.32; filter:grayscale(.35);}
+.strategy-card.expanded{box-shadow:0 8px 26px rgba(7,24,30,.16);}
+
+.strategy-header{
+  width:100%; border:none; cursor:pointer; text-align:left;
+  display:flex; align-items:center; gap:16px;
+  padding:19px 22px; color:#07181e;
+}
+.strategy-header .num-badge{
+  flex:0 0 auto; width:36px; height:36px; border-radius:10px;
+  background:rgba(255,255,255,.22); display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:14px;
+}
+.strategy-header .title{flex:1; font-size:17px; font-weight:500; letter-spacing:-0.01em; line-height:1.3;}
+.strategy-header .count{font-size:12px; font-weight:500; opacity:.85; white-space:nowrap;}
+.strategy-header .chevron{flex:0 0 auto; transition:transform .25s var(--ease-expressive);}
+.strategy-header.expanded .chevron{transform:rotate(180deg);}
+
+.approach-list{
+  max-height:0; overflow:hidden;
+  transition:max-height .32s var(--ease-expressive);
+  background:var(--color-cream-300);
+}
+.approach-list.expanded{ /* max-height set inline via JS */ }
+
+.approach-item{
+  width:100%; border:none; background:none; cursor:pointer; text-align:left;
+  display:flex; align-items:flex-start; gap:14px;
+  padding:15px 22px 15px 26px;
+  border-top:1px solid var(--color-cream-700);
+  transition:background-color .15s, opacity .2s;
+}
+.approach-item:hover{background-color:var(--color-white);}
+.approach-item.dim{opacity:.3; pointer-events:none;}
+.approach-num{
+  flex:0 0 auto; width:26px; height:26px; margin-top:1px; border-radius:7px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:11px; font-weight:700; color:#07181e;
+}
+.approach-text{min-width:0;}
+.approach-title{font-size:14.5px; font-weight:500; color:var(--color-charcoal-900); line-height:1.3; margin-bottom:3px;}
+.approach-snippet{font-size:12.5px; color:var(--color-charcoal-400); line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+.approach-arrow{flex:0 0 auto; margin-top:4px; opacity:.4;}
+
+/* ---------- modal / fiche ---------- */
+.modal-backdrop{
+  position:fixed; inset:0; background:rgba(7,24,30,.55);
+  display:flex; align-items:flex-start; justify-content:center;
+  padding:5vh 16px; z-index:100; overflow-y:auto;
+  opacity:0; pointer-events:none; transition:opacity .2s;
+}
+.modal-backdrop.open{opacity:1; pointer-events:auto;}
+.fiche{
+  background:var(--color-white); border-radius:20px; max-width:640px; width:100%;
+  box-shadow:0 30px 70px rgba(0,0,0,.35);
+  transform:translateY(16px); transition:transform .25s var(--ease-expressive);
+  overflow:hidden;
+}
+.modal-backdrop.open .fiche{transform:translateY(0);}
+.fiche-head{padding:26px 28px 20px; color:#fff; position:relative;}
+.fiche-close{
+  position:absolute; top:16px; right:16px; width:34px; height:34px; border-radius:50%;
+  background:rgba(255,255,255,.18); border:none; color:#fff; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; transition:background .15s;
+}
+.fiche-close:hover{background:rgba(255,255,255,.32);}
+.fiche-eyebrow{font-size:11.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; opacity:.85; margin-bottom:6px;}
+.fiche-title{font-size:22px; font-weight:500; max-width:80%;}
+.fiche-body{padding:22px 28px 28px; display:flex; flex-direction:column; gap:20px;}
+.fiche-section{display:flex; gap:12px;}
+.fiche-icon{
+  flex:0 0 auto; width:32px; height:32px; border-radius:9px;
+  background:var(--color-cream-500); display:flex; align-items:center; justify-content:center;
+}
+.fiche-section-body{flex:1; min-width:0;}
+.fiche-section-label{font-size:12.5px; font-weight:700; color:var(--color-charcoal-700); text-transform:uppercase; letter-spacing:.04em; margin-bottom:6px;}
+.fiche-section-content{font-size:14.5px; color:var(--color-charcoal-600); line-height:1.6;}
+.fiche-section-content ol, .fiche-section-content ul{margin:0; padding-left:18px; display:flex; flex-direction:column; gap:7px;}
+.fiche-section-content li::marker{font-weight:700;}
+hr.fiche-divider{border:none; border-top:1px solid var(--color-cream-700); margin:0;}
+
+/* ---------- footer ---------- */
+footer{background:var(--color-charcoal-900); color:var(--color-cream-500); padding:40px clamp(16px,6vw,64px) 28px;}
+.footer-inner{max-width:900px; margin:0 auto;}
+footer h3{color:#fff; font-size:19px; font-weight:500; margin-bottom:10px;}
+footer p{color:rgba(248,245,233,.7); font-size:13.5px; max-width:70ch; margin-bottom:16px;}
+.footer-bottom{border-top:1px solid rgba(248,245,233,.15); margin-top:18px; padding-top:16px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:12.5px; color:rgba(248,245,233,.5);}
+
+@media (max-width:640px){
+  .controls-bar{top:60px;}
+  .strategy-header{padding:16px 16px;}
+  .approach-item{padding:13px 16px 13px 18px;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <div class="brand-mark" aria-hidden="true"></div>
+  </div>
+  <div class="header-tag">Guide pédagogique interactif</div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Évaluation &amp; intelligence artificielle</div>
+    <h1>Stratégies et approches pour des évaluations authentiques à l'ère de l'IA</h1>
+    <p class="lead">Guide co-construit par les conseillers pédagogiques, appuyé sur la littérature scientifique et l'expérience professionnelle, en dialogue avec Claude (Sonnet 5).</p>
+    <div class="scroll-cue">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 4V20M12 20L6 14M12 20L18 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Faites défiler pour explorer les 12 stratégies
+    </div>
+  </div>
+</section>
+
+<div class="controls-bar">
+  <div class="controls-inner">
+    <div class="search-wrap">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#07181E" stroke-width="2"/><path d="M21 21L16.65 16.65" stroke="#07181E" stroke-width="2" stroke-linecap="round"/></svg>
+      <input id="searchInput" type="text" placeholder="Chercher une stratégie ou une approche…" autocomplete="off">
+    </div>
+    <div class="ctrl-buttons">
+      <button class="ctrl-btn" id="expandAllBtn" type="button">Tout déplier</button>
+      <button class="ctrl-btn" id="collapseAllBtn" type="button">Tout replier</button>
+    </div>
+  </div>
+  <div class="hint">Cliquez sur une stratégie pour la déplier, puis sur une approche pour ouvrir sa fiche complète.</div>
+</div>
+
+<div class="no-match-banner" id="noMatchBanner">Aucune correspondance — essayez un autre mot-clé.</div>
+
+<main>
+  <div class="strategies-list" id="strategiesList"></div>
+</main>
+
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="fiche" role="dialog" aria-modal="true">
+    <div class="fiche-head" id="ficheHead">
+      <button class="fiche-close" id="ficheClose" aria-label="Fermer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 6L18 18M6 18L18 6" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg>
+      </button>
+      <div class="fiche-eyebrow" id="ficheEyebrow"></div>
+      <div class="fiche-title" id="ficheTitle"></div>
+    </div>
+    <div class="fiche-body" id="ficheBody"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <h3>À propos de ce guide</h3>
+    <p>Guide pédagogique conçu pour soutenir la conception d'évaluations sommatives authentiques dans un contexte où les outils d'intelligence artificielle générative sont accessibles aux étudiants. Chaque fiche présente une mise en situation, un déroulement, les traces à collecter et les compétences réellement évaluées.</p>
+    <div class="footer-bottom">
+      <span>Équipe pédagogique</span>
+      <span>Co-construit avec Claude (Sonnet 5)</span>
+    </div>
+  </div>
+</footer>
+
+<script id="strategyData" type="application/json">
+[{"num": "1", "title": "Évaluer le prompt", "approaches": [{"num": "1.1", "title": "Requête, analyse, recommandation", "situation": "L'étudiant est placé dans un contexte disciplinaire ou professionnel et doit rédiger une requête destinée à un outil d'intelligence artificielle afin d'obtenir un résultat utile à la tâche demandée.", "etapes": ["L'étudiant formule une requête précise et contextualisée. La qualité de sa demande révèle sa compréhension de la tâche et sa capacité à orienter l'IA vers un résultat pertinent.", "À partir de la réponse obtenue, l'étudiant en évalue la pertinence, la complétude et les limites, révélant ainsi son jugement disciplinaire.", "L'étudiant explique en quoi son prompt a influencé la réponse obtenue, puis propose des améliorations pour mieux orienter l'IA vers un résultat optimal."], "traces": "L'enseignant peut demander à l'étudiant de soumettre l'historique complet de la conversation avec l'IA (captures d'écran ou export), le prompt initial et ses versions révisées, ainsi qu'un court texte réflexif rédigé par l'étudiant lui-même — cette dernière trace étant la plus difficile à déléguer à l'IA.", "evalue": ["La maîtrise du contenu disciplinaire — pour juger la qualité de la sortie", "La pensée critique — pour identifier les biais et les lacunes", "La métacognition — pour comprendre son propre processus de formulation", "La littératie IA — pour formuler, analyser et raffiner efficacement"]}, {"num": "1.2", "title": "Donner un rôle à l'IA (le client)", "situation": "L'étudiant est placé dans un contexte disciplinaire ou professionnel. À partir de cette mise en situation, il doit configurer l'IA pour qu'elle joue le rôle d'un client et interagir avec elle pour générer une demande réaliste.", "etapes": ["L'étudiant rédige une série de prompts pour configurer le rôle du client que l'IA incarnera, en précisant qui il est — son profil, son secteur, ses caractéristiques — et ce qu'il souhaite obtenir — ses besoins, ses attentes, ses contraintes. La qualité de cette configuration révèle sa compréhension du contexte professionnel et de la clientèle cible.", "Une fois la demande du client générée par l'IA, l'étudiant l'analyse de façon critique : est-elle réaliste, complète, cohérente avec le profil défini? Quelles informations sont manquantes ou imprécises?", "À partir de la demande générée, l'étudiant produit un ou plusieurs livrables selon les consignes de l'enseignant : des recommandations pour bonifier la demande du client, une réponse en tant que fournisseur de service, ou d'autres productions adaptées au contexte du cours — proposition, soumission, plan d'action, etc."], "traces": "L'enseignant peut demander les prompts utilisés pour configurer le rôle du client, l'historique complet de la conversation avec l'IA, ainsi que le livrable final accompagné d'une courte réflexion sur les choix posés par l'étudiant.", "evalue": ["La connaissance du contexte professionnel — pour créer un client crédible", "La pensée critique — pour analyser et bonifier la demande générée", "La compétence disciplinaire — pour produire une réponse ou une recommandation pertinente", "La littératie IA — pour configurer efficacement un rôle et interpréter le résultat"]}, {"num": "1.3", "title": "Donner un rôle à l'IA (le fournisseur)", "situation": "L'étudiant est placé dans un contexte disciplinaire ou professionnel. À partir de cette mise en situation, il configure l'IA pour qu'elle joue le rôle d'un fournisseur, puis il interagit avec elle en tant que client pour obtenir une offre de produit ou de service.", "etapes": ["L'étudiant rédige une série de prompts pour configurer le rôle du fournisseur que l'IA incarnera, en précisant qui il est — son secteur, son positionnement, ses spécialités — et ce qu'il offre — les produits, services ou solutions qu'il est censé fournir. La précision de cette configuration démontre sa connaissance du marché et des acteurs de son domaine.", "L'étudiant rédige un second prompt dans lequel il se positionne comme client et formule sa propre demande, en précisant ses besoins, ses attentes et ses contraintes. L'IA génère alors une réponse du fournisseur — offre, proposition, devis, recommandation, etc.", "À partir de la réponse générée, l'étudiant produit un ou plusieurs livrables selon les consignes de l'enseignant : une analyse de la réponse du fournisseur, une recommandation argumentée sur l'opportunité de le retenir, une contre-proposition ou une négociation, ou d'autres productions adaptées au contexte du cours — grille d'évaluation, rapport comparatif, etc."], "traces": "L'enseignant peut demander les prompts utilisés pour configurer le rôle du fournisseur, le prompt de demande client, l'historique complet de la conversation avec l'IA, ainsi que le livrable final accompagné d'une justification des choix posés par l'étudiant.", "evalue": ["La connaissance du marché et des fournisseurs — pour créer un profil crédible", "Le jugement professionnel — pour analyser et évaluer une offre", "La capacité de décision — pour recommander ou rejeter un fournisseur de façon argumentée", "La littératie IA — pour configurer un rôle, formuler une demande et interpréter la réponse"]}]}, {"num": "2", "title": "Journal de bord réflexif itératif", "approaches": [{"num": "2.1", "title": "Documenter, analyser et itérer en temps réel", "situation": "L'étudiant est placé dans un contexte disciplinaire ou professionnel, que ce soit dans le cadre d'un projet ou d'un examen sommatif. Tout au long de la réalisation d'une tâche avec l'aide d'un outil d'IA, il documente son processus de pensée en temps réel : ses décisions, ses hésitations, ses essais et ses révisions. Ce que l'IA ne peut pas reconstituer rétrospectivement de façon crédible, c'est précisément cette trace vivante du raisonnement en action.", "etapes": ["Au fil de ses interactions avec l'IA, l'étudiant consigne ses réflexions en temps réel : pourquoi il a formulé telle requête, ce qu'il espérait obtenir, ce qu'il a obtenu à la place, et comment il a ajusté son approche. Le journal capte le processus, pas seulement le résultat.", "L'étudiant revient sur ses entrées de journal pour identifier les moments charnières : quand a-t-il changé de direction? Pourquoi certains prompts ont-ils mieux fonctionné que d'autres? Cette analyse révèle la profondeur de sa compréhension disciplinaire.", "À partir de son analyse, l'étudiant formule ce qu'il ferait différemment : quelles requêtes il reformulerait, quelles étapes il anticiperait mieux, et comment il utiliserait l'IA plus efficacement pour une prochaine tâche similaire."], "traces": "Le journal de bord complet avec heures et dates, les versions successives des prompts utilisés, ainsi qu'un texte de synthèse réflexif rédigé par l'étudiant — cette dernière trace étant la plus révélatrice de la pensée authentique, car elle ne peut pas être générée après coup sans que les incohérences temporelles ne trahissent une fabrication.", "evalue": ["La métacognition — pour observer et analyser son propre processus de travail", "La maîtrise du contenu disciplinaire — pour juger la pertinence des résultats obtenus", "La pensée critique — pour identifier ce qui a fonctionné, ce qui a échoué et pourquoi", "La littératie IA — pour itérer intelligemment sur ses requêtes au fil du temps"]}]}, {"num": "3", "title": "Validation orale des apprentissages", "approaches": [{"num": "3.1", "title": "Défense orale du travail écrit", "situation": "L'étudiant a remis un travail écrit, produit avec ou sans l'aide de l'IA. Il est convoqué à une courte défense orale au cours de laquelle l'enseignant lui pose des questions imprévisibles directement liées à son travail. L'objectif est de vérifier qu'il comprend réellement ce qu'il a soumis.", "etapes": ["L'étudiant relit son travail et anticipe les questions possibles, sans savoir ce qui lui sera demandé — cette incertitude est volontaire et constitutive de l'évaluation.", "L'étudiant répond de vive voix, sans support ni IA, aux questions ciblées de l'enseignant portant sur le contenu, les choix, les concepts ou le raisonnement présents dans son travail. Ses réponses révèlent s'il en est l'auteur intellectuel."], "traces": "Le travail écrit soumis, les notes de l'enseignant sur les réponses orales, et si applicable un enregistrement audio ou vidéo de la défense.", "evalue": ["La maîtrise du contenu disciplinaire — pour répondre avec justesse à des questions pointues", "La pensée critique — pour expliquer et défendre ses choix sous pression", "L'authenticité du travail — pour vérifier l'appropriation réelle du contenu soumis"]}, {"num": "3.2", "title": "Entrevue de validation des savoirs", "situation": "L'étudiant est convoqué à une courte entrevue individuelle. Contrairement à la défense orale, cette entrevue n'est pas ancrée dans un travail écrit spécifique — elle vise à valider que l'étudiant possède les savoirs et compétences attendus du cours, indépendamment de ce qu'il a pu produire avec l'IA.", "etapes": ["L'étudiant répond de vive voix, sans préparation ni support, aux questions ouvertes de l'enseignant portant sur les concepts clés du cours, les démarches apprises ou des mises en situation inédites.", "L'étudiant explique comment il aborderait un problème, justifierait une décision ou analyserait une situation. On évalue ici la profondeur de sa compréhension, pas seulement sa capacité à restituer de l'information.", "L'enseignant peut relancer sur une réponse pour aller plus loin — pourquoi? comment? qu'est-ce qui se passerait si? Ces relances permettent de distinguer une compréhension superficielle d'une maîtrise réelle."], "traces": "Les notes de l'enseignant sur le déroulement de l'entrevue, la grille d'évaluation utilisée, et si applicable un enregistrement de l'échange.", "evalue": ["La maîtrise des savoirs disciplinaires — pour répondre à des questions sans filet", "La capacité de raisonnement — pour expliquer une démarche et non seulement un résultat", "L'authenticité des apprentissages — pour vérifier que les compétences appartiennent vraiment à l'étudiant"]}]}, {"num": "4", "title": "Tâche ancrée dans le contexte local et personnel", "approaches": [{"num": "4.1", "title": "Analyse d'un cas réel tiré du vécu de l'étudiant", "situation": "L'étudiant est invité à analyser une situation qu'il a lui-même vécue — en stage, en milieu de travail, ou dans le cadre de son parcours au sein du programme. Le cas analysé lui appartient : l'IA peut aider à structurer ou à reformuler, mais elle ne peut pas inventer le vécu qui fonde l'analyse.", "etapes": ["L'étudiant choisit une situation réelle et significative tirée de son expérience et la décrit avec précision : le contexte, les acteurs impliqués, les enjeux observés et sa propre position dans la situation.", "L'étudiant mobilise les concepts, modèles ou cadres théoriques du cours pour analyser la situation décrite, démontrant ainsi sa capacité à faire le pont entre la théorie et une réalité qu'il a personnellement traversée.", "L'étudiant prend du recul sur son rôle dans la situation : qu'aurait-il fait différemment? Quelles compétences cette expérience a-t-elle révélées ou mises en défaut? Cette réflexion personnelle est imperméable à la délégation à l'IA."], "traces": "La description de la situation, l'analyse mobilisant les concepts du cours, et le texte réflexif sur la posture de l'étudiant.", "evalue": ["La maîtrise du contenu disciplinaire — pour appliquer les concepts du cours à une situation réelle", "Le jugement professionnel — pour analyser une situation complexe avec nuance", "La métacognition — pour réfléchir sur sa propre posture et ses apprentissages", "L'authenticité du vécu — pour ancrer l'analyse dans une expérience que seul l'étudiant possède"]}, {"num": "4.2", "title": "Étude de cas propre à l'établissement ou au programme", "situation": "L'étudiant est invité à analyser une situation, une problématique ou un enjeu spécifique à son établissement, à son programme ou à son milieu professionnel local. Le caractère situé et particulier du cas rend toute génération IA générique insuffisante — seul l'étudiant dispose du contexte nécessaire pour produire une analyse crédible.", "etapes": ["L'étudiant recueille les informations pertinentes sur le cas — données internes, observations, documents propres à l'établissement ou au programme. Cette collecte est elle-même une démonstration de compétence.", "L'étudiant applique les outils d'analyse du cours au contexte documenté, en démontrant que son analyse tient compte des particularités locales — ce qu'une réponse IA générique ne peut pas faire de façon convaincante.", "L'étudiant propose des pistes de solution ou d'amélioration adaptées au contexte spécifique analysé. La pertinence de ces recommandations dépend directement de la qualité de sa connaissance du terrain."], "traces": "Les sources et données locales utilisées, l'analyse de la problématique, et les recommandations contextualisées.", "evalue": ["La connaissance du contexte professionnel et local — pour produire une analyse ancrée et crédible", "La maîtrise du contenu disciplinaire — pour appliquer les outils du cours à une situation réelle", "Le jugement professionnel — pour formuler des recommandations adaptées et réalistes", "L'authenticité de la démarche — pour démontrer une connaissance du terrain que l'IA ne peut pas simuler"]}, {"num": "4.3", "title": "Portrait d'un acteur ou d'un milieu rencontré en stage", "situation": "L'étudiant est invité à produire une analyse à partir d'un acteur réel — un collègue, un supérieur, un client, un partenaire — ou d'un milieu organisationnel qu'il a côtoyé durant son stage ou son expérience de terrain. La richesse et la crédibilité de l'analyse reposent entièrement sur des observations que seul l'étudiant a pu faire.", "etapes": ["L'étudiant présente la personne ou l'organisation choisie : son rôle, ses caractéristiques, son fonctionnement et les dynamiques observées. La description doit être suffisamment précise et située pour qu'il soit impossible de la confondre avec un exemple générique.", "L'étudiant mobilise les outils théoriques du cours pour interpréter ce qu'il a observé, en démontrant que son analyse s'appuie sur des observations directes et non sur des généralités — ce qui la distingue irrémédiablement d'une sortie IA.", "L'étudiant identifie ce que cette observation lui a appris sur sa future pratique : quelles attitudes, compétences ou réflexes professionnels cette expérience a-t-elle renforcés ou remis en question?"], "traces": "La description de l'acteur ou du milieu, l'analyse mobilisant les concepts du cours, et le texte sur les apprentissages professionnels dégagés.", "evalue": ["La capacité d'observation — pour décrire un acteur ou un milieu avec précision et profondeur", "La maîtrise du contenu disciplinaire — pour relier des observations concrètes aux concepts du cours", "Le développement de l'identité professionnelle — pour articuler ce que le terrain a appris à l'étudiant sur lui-même", "L'authenticité de la démarche — pour s'appuyer sur un vécu que l'IA ne peut ni inventer ni simuler de façon crédible"]}]}, {"num": "5", "title": "Évaluation en deux temps", "approaches": [{"num": "5.1", "title": "Brouillon avec révision argumentée", "situation": "L'étudiant est placé dans un contexte disciplinaire ou professionnel et doit produire un travail en deux temps. Il remet d'abord un brouillon, reçoit une rétroaction, puis soumet une version révisée en justifiant chacun de ses changements. L'IA peut réécrire — mais elle ne peut pas expliquer pourquoi l'étudiant, lui, a choisi de changer quoi que ce soit.", "etapes": ["L'étudiant produit une première version de son travail. L'utilisation de l'IA est permise et transparente : il peut s'en servir pour générer du contenu, reformuler ou organiser ses idées.", "L'étudiant remet sa première version accompagnée des traces de son interaction avec l'IA — historique de conversation et prompts utilisés.", "L'étudiant prend connaissance des commentaires de l'enseignant et identifie les points à améliorer.", "L'étudiant produit une version améliorée de son travail. Il peut utiliser l'IA pour reformuler ou bonifier certains passages, mais les décisions de révision lui appartiennent.", "Pour chaque modification significative, l'étudiant rédige une justification personnelle : pourquoi ce changement? En quoi répond-il à la rétroaction? Cette explication ne peut pas être déléguée à l'IA — c'est ici que s'exprime son appropriation réelle du contenu."], "traces": "Le brouillon initial avec les prompts utilisés, la version révisée, et le document de justification des changements.", "evalue": ["La maîtrise du contenu disciplinaire — pour justifier des choix avec des arguments fondés", "La pensée critique — pour évaluer la rétroaction reçue et y répondre de façon nuancée", "La métacognition — pour comprendre et expliquer sa propre démarche de révision", "La littératie IA — pour distinguer ce que l'IA peut faire de ce que l'étudiant doit assumer lui-même"]}, {"num": "5.2", "title": "Dialogue critique avec une version générée par l'IA", "situation": "L'étudiant reçoit un travail entièrement généré par l'IA à partir d'une mise en situation disciplinaire ou professionnelle. Il ne part pas d'un brouillon personnel — il part d'une sortie IA qu'il doit challenger, corriger et s'approprier.", "etapes": ["L'étudiant lit attentivement le travail généré et l'annote : ce qui est juste, ce qui est incomplet, ce qui est erroné ou inadapté au contexte.", "L'étudiant rédige un court bilan critique de la sortie IA — ses forces, ses faiblesses, et ce qui doit absolument être corrigé pour que le travail soit acceptable.", "En s'appuyant sur son diagnostic, l'étudiant produit sa propre version améliorée. Il peut réutiliser des parties de la sortie IA, les modifier ou les remplacer entièrement.", "Pour chaque modification ou conservation significative, l'étudiant explique son choix : pourquoi garder ceci? Pourquoi remplacer cela? La justification est personnelle et ne peut être déléguée à l'IA."], "traces": "La sortie IA annotée, le diagnostic critique, la version révisée par l'étudiant, et le document de justification des interventions.", "evalue": ["La maîtrise du contenu disciplinaire — pour détecter les erreurs et les lacunes dans la sortie IA", "La pensée critique — pour distinguer ce qui est acceptable de ce qui doit être corrigé", "La métacognition — pour articuler ses propres choix éditoriaux", "La littératie IA — pour comprendre les limites et les biais d'une sortie générée"]}]}, {"num": "6", "title": "Analyse de l'erreur intentionnelle", "approaches": [{"num": "6.1", "title": "Identifier et corriger une erreur dans un contenu fourni", "situation": "L'enseignant soumet à l'étudiant un texte, un calcul ou un raisonnement volontairement erroné. L'étudiant doit repérer l'erreur, la corriger et expliquer pourquoi elle est problématique. L'IA peut produire une correction — mais elle ne peut pas expliquer pourquoi l'étudiant, lui, a su la reconnaître.", "etapes": ["L'étudiant analyse le contenu, identifie ce qui est inexact ou incohérent, et le nomme avec les termes disciplinaires appropriés. Le situer précisément est essentiel — pointer vaguement une zone problématique ne suffit pas.", "L'étudiant produit une version corrigée en expliquant sur quelle règle, quel principe ou quel concept il s'appuie. La correction et sa justification forment un tout indissociable — l'une sans l'autre est insuffisante."], "traces": "Le contenu erroné annoté, la version corrigée et la justification du raisonnement.", "evalue": ["La maîtrise du contenu disciplinaire — pour détecter et corriger une erreur avec précision", "La pensée critique — pour distinguer ce qui est juste de ce qui est problématique", "La capacité d'argumentation — pour justifier une correction avec les outils du cours"]}, {"num": "6.2", "title": "Comparer deux versions et identifier laquelle est erronée", "situation": "L'enseignant soumet deux versions d'un même contenu dont l'une est correcte et l'autre contient une erreur intentionnelle. L'étudiant doit identifier laquelle est erronée, expliquer pourquoi et justifier la version correcte.", "etapes": ["L'étudiant lit les deux versions en parallèle, repère les différences et formule une hypothèse sur laquelle est erronée et pourquoi, avant de se prononcer.", "L'étudiant identifie clairement la version problématique et nomme l'erreur avec rigueur. Une mauvaise identification ou une justification floue révèle une compréhension insuffisante.", "L'étudiant explique pourquoi la version correcte est juste en mobilisant les concepts du cours — démontrant ainsi qu'il comprend la logique qui sous-tend la bonne réponse, au-delà de la simple correction.", "L'étudiant propose une explication sur l'origine probable de l'erreur : quel malentendu, quelle confusion ou quelle lacune pourrait amener quelqu'un à produire ce contenu erroné? Cette réflexion révèle une compréhension fine du contenu."], "traces": "Les deux versions annotées, l'identification argumentée de l'erreur et la justification de la version correcte.", "evalue": ["La maîtrise du contenu disciplinaire — pour distinguer le correct de l'erroné avec certitude", "Le jugement analytique — pour comparer deux contenus et se prononcer avec précision", "La capacité d'argumentation — pour justifier un choix avec rigueur et profondeur"]}, {"num": "6.3", "title": "Produire soi-même un contenu erroné et en expliquer les pièges", "situation": "L'étudiant est invité à produire délibérément un contenu erroné en y intégrant des erreurs plausibles et réalistes. Il doit ensuite documenter chaque erreur introduite et expliquer pourquoi elle pourrait tromper quelqu'un qui maîtrise mal le contenu. Concevoir une erreur crédible exige une maîtrise plus profonde que simplement corriger une erreur existante.", "etapes": ["Avant même de rédiger, l'étudiant réfléchit aux zones de fragilité du contenu : quels sont les malentendus fréquents? Quelles confusions sont plausibles? Ce travail préparatoire est lui-même une démonstration de maîtrise.", "L'étudiant rédige le contenu en y intégrant les erreurs planifiées. Celles-ci doivent être suffisamment subtiles pour être crédibles — des erreurs grossières révèlent une faible compréhension autant qu'une faible créativité analytique.", "L'étudiant produit un document d'accompagnement dans lequel il liste chaque erreur, l'explique et justifie pourquoi elle constitue un piège réaliste pour quelqu'un dont la maîtrise est insuffisante."], "traces": "Le contenu erroné produit, le document listant et expliquant chaque erreur intentionnelle.", "evalue": ["La maîtrise approfondie du contenu disciplinaire — pour concevoir des erreurs subtiles et réalistes", "La pensée critique — pour anticiper les zones de fragilité et les malentendus fréquents", "La créativité analytique — pour se mettre dans la posture de celui qui évalue plutôt que de celui qui répond", "L'authenticité des apprentissages — pour démontrer une compréhension assez profonde pour savoir où et comment se tromper de façon convaincante"]}]}, {"num": "7", "title": "Production multimodale avec contrainte technique", "approaches": [{"num": "7.1", "title": "Enregistrement audio ou vidéo annoté", "situation": "L'étudiant produit un enregistrement audio ou vidéo dans lequel il explique, commente ou analyse un contenu disciplinaire, puis l'annote de façon réflexive. La combinaison de la voix, du raisonnement en temps réel et des annotations rend la délégation à l'IA structurellement impossible.", "etapes": ["L'étudiant prépare un plan sommaire de ce qu'il va expliquer. Ce plan organise sa pensée sans éliminer la spontanéité qui révèle la compréhension réelle — un script mot à mot serait un signal d'alarme.", "L'étudiant enregistre sa présentation ou démonstration selon le format approprié au contexte : Audio simple (Anchor, GarageBand, Voice Memos, Audacity) ; Vidéo avec capture d'écran (Loom, OBS, Screencastify) ; Vidéo avec tableau blanc (Explain Everything, Doceri) ; Vidéo face caméra (smartphone, webcam)", "L'étudiant revient sur son enregistrement et identifie les moments où il a hésité, reformulé ou changé de direction — en expliquant pourquoi. Cette couche réflexive ne peut pas être fabriquée après coup de façon crédible."], "traces": "Le fichier audio ou vidéo, les annotations réflexives et le plan préparatoire.", "evalue": ["La maîtrise du contenu disciplinaire — pour expliquer avec clarté et précision à l'oral", "La métacognition — pour identifier et commenter ses propres moments de doute ou de révision", "L'authenticité de la démarche — pour démontrer une compréhension qui s'exprime en temps réel"]}, {"num": "7.2", "title": "Schéma dessiné à la main et commenté", "situation": "L'étudiant produit un schéma dessiné à la main pour représenter un concept, un processus ou une structure disciplinaire, puis le commente. Le trait, les choix graphiques et la logique visuelle portent une signature personnelle que l'IA ne peut pas reproduire.", "etapes": ["L'étudiant produit son schéma à la main, selon le support disponible : Papier et crayon numérisé avec scanner ou appareil photo ; Tablette avec stylet ; Tableau blanc numérique à main levée", "L'étudiant explique ses choix graphiques — pourquoi ces éléments sont reliés ainsi, pourquoi certains sont mis en évidence, ce que la structure révèle de sa compréhension. Il peut annoter directement sur le schéma numérisé ou enregistrer un commentaire audio par-dessus.", "L'étudiant identifie ce que le fait de schématiser a clarifié ou révélé : quelles connexions sont apparues en dessinant? Quelles zones sont restées floues?"], "traces": "Le schéma numérisé, les annotations ou l'enregistrement de commentaire, et le texte réflexif sur le processus de conception.", "evalue": ["La maîtrise du contenu disciplinaire — pour représenter visuellement des concepts avec justesse", "La pensée systémique — pour organiser des éléments en un tout cohérent et lisible", "La métacognition — pour réfléchir sur ce que le processus de schématisation a révélé"]}, {"num": "7.3", "title": "Carte mentale commentée à voix haute", "situation": "L'étudiant construit une carte mentale autour d'un concept central, puis l'explique à voix haute. La combinaison de la structure visuelle et du commentaire oral spontané révèle une profondeur de compréhension qu'aucune production entièrement textuelle ne peut égaler.", "etapes": ["À partir d'un concept central proposé par l'enseignant, l'étudiant conçoit sa carte en choisissant la modalité qui lui convient : Outils numériques collaboratifs ; Logiciels dédiés ; Suite Microsoft ou Google ; À la main", "L'étudiant navigue dans sa carte à voix haute : il explique ses regroupements, justifie les liens tracés et nomme ce qu'il a délibérément laissé de côté. L'oral capte ce que le visuel seul ne montre pas.", "Après soumission, l'étudiant répond à l'oral ou par écrit à une question ciblée de l'enseignant portant sur un choix spécifique de la carte. Cette étape verrouille l'authenticité de l'ensemble — une carte produite par l'IA s'effondre ici."], "traces": "La carte mentale exportée, l'enregistrement du commentaire oral et la réponse à la question de l'enseignant.", "evalue": ["La maîtrise du contenu disciplinaire — pour structurer et relier des concepts avec cohérence", "La pensée critique — pour justifier des choix d'organisation et d'exclusion", "L'authenticité de la démarche — pour démontrer en temps réel que la carte reflète une compréhension personnelle"]}, {"num": "7.4", "title": "Présentation en couches multimodales", "situation": "L'étudiant produit une présentation qui combine délibérément plusieurs formats — texte, visuel, audio, données — en justifiant pourquoi chaque format a été choisi pour communiquer une idée spécifique. C'est le mélange contraint et réfléchi des formats qui rend la production difficile à déléguer entièrement.", "etapes": ["Avant de commencer, l'étudiant décide quels formats il utilisera et pour quelles parties du contenu, puis soumet cette justification à l'enseignant. Ce choix est lui-même une démonstration de compétence — savoir quel format sert le mieux quelle idée révèle une maîtrise à la fois disciplinaire et communicationnelle.", "L'étudiant assemble sa présentation multimodale selon le format approprié au contexte : Diaporama commenté à voix haute ; Vidéo avec annotations visuelles ; Document interactif ; Podcast avec visuels complémentaires"], "traces": "La justification des choix de format remise avant production, la production multimodale complète et les fichiers sources.", "evalue": ["La maîtrise du contenu disciplinaire — pour choisir le format le plus juste pour chaque idée", "La compétence communicationnelle — pour produire un message cohérent à travers plusieurs formats", "La métacognition — pour réfléchir sur ses propres choix de communication avant et pendant la production", "La littératie numérique — pour mobiliser des outils variés de façon pertinente et intentionnelle"]}]}, {"num": "8", "title": "Question évolutive en cours de séance", "approaches": [{"num": "8.1", "title": "Amorce connue, question finale inconnue", "situation": "L'enseignant annonce à l'avance une amorce — un thème, un concept, un contexte — mais révèle la question précise uniquement au moment de l'évaluation. L'étudiant ne peut pas préparer une réponse toute faite; il doit développer une maîtrise suffisamment souple pour s'adapter à une question qu'il ne connaît pas encore.", "etapes": ["L'enseignant partage à l'avance le cadre de l'évaluation : le thème général, les concepts en jeu, le type de raisonnement attendu. L'étudiant sait dans quel territoire il sera évalué — pas où exactement il sera interrogé.", "La question finale est dévoilée en séance. Construite à partir de l'amorce, son angle, sa contrainte ou sa mise en situation sont nouveaux. L'étudiant qui a préparé des compétences plutôt qu'une réponse est avantagé.", "L'étudiant répond à la question en temps limité, sans accès à l'IA. La réponse révèle ce qu'il a réellement intégré — pas ce qu'il a pu faire générer à l'avance."], "traces": "L'amorce communiquée à l'avance, la question finale révélée en séance et la réponse produite par l'étudiant.", "evalue": ["La maîtrise du contenu disciplinaire — pour mobiliser des savoirs de façon flexible et non mécanique", "La capacité d'adaptation — pour répondre à une question inédite à partir de compétences consolidées", "L'authenticité des apprentissages — pour démontrer une préparation en profondeur plutôt qu'une préparation de surface"]}, {"num": "8.2", "title": "Question construite en direct à partir des réponses de l'étudiant", "situation": "L'enseignant amorce l'évaluation avec une question ouverte, puis fait évoluer la question suivante en fonction de ce que l'étudiant vient de répondre. Chaque réponse ouvre la prochaine question — l'étudiant ne peut pas anticiper la trajectoire de l'évaluation, seulement se préparer à naviguer dans le territoire annoncé.", "etapes": ["L'étudiant répond à une première question suffisamment ouverte pour laisser plusieurs directions possibles. Cette réponse initiale oriente la suite de l'évaluation.", "L'étudiant navigue les questions suivantes que l'enseignant construit à partir de ses réponses — en approfondissant, déplaçant l'angle ou introduisant une contrainte nouvelle. Il doit rester cohérent avec ce qu'il a dit tout en s'adaptant aux nouvelles directions."], "traces": "Les notes de l'enseignant sur la trajectoire de l'échange, et si applicable un enregistrement audio ou vidéo de la séance.", "evalue": ["La profondeur de la compréhension — pour maintenir une cohérence à travers plusieurs questions enchaînées", "La capacité d'adaptation — pour ajuster son raisonnement en temps réel sans perdre le fil", "L'authenticité des apprentissages — pour démontrer que la maîtrise est réelle et non préparée à l'avance"]}, {"num": "8.3", "title": "Variante par groupe — même amorce, questions différentes", "situation": "Tous les étudiants reçoivent la même amorce à l'avance, mais chacun se voit attribuer une question différente au moment de l'évaluation. La préparation collaborative est possible et même encouragée — mais la réponse finale appartient à chaque étudiant individuellement.", "etapes": ["Les étudiants peuvent travailler ensemble pour explorer le territoire annoncé : discuter des concepts, anticiper les angles possibles, s'entraîner mutuellement. Cette préparation collective renforce les compétences sans permettre la délégation de la réponse finale.", "Au moment de l'évaluation, chaque étudiant reçoit sa propre question — distincte de celle de ses pairs. Elle est construite dans le même territoire que l'amorce, mais son angle est unique.", "L'étudiant répond seul, en conditions contrôlées. La diversité des questions rend le partage de réponses toutes faites inefficace — chacun doit mobiliser ses compétences pour sa question spécifique."], "traces": "L'amorce commune, les questions individuelles attribuées et les réponses produites par chaque étudiant.", "evalue": ["La maîtrise individuelle du contenu — pour répondre à une question que personne d'autre n'a reçue", "La capacité de transfert — pour appliquer une préparation collective à une situation personnelle et inédite", "L'authenticité des apprentissages — pour démontrer que la compétence est intégrée, pas empruntée"]}]}, {"num": "9", "title": "Annotation de sources", "approaches": [{"num": "9.1", "title": "Sélection et annotation critique de sources", "situation": "L'étudiant doit sélectionner des sources pertinentes pour soutenir une argumentation disciplinaire, les citer correctement et les annoter de façon critique. Ce n'est pas la source qui est évaluée — c'est le jugement que l'étudiant exerce sur elle et le lien qu'il trace vers sa propre pensée.", "etapes": ["L'étudiant choisit ses sources en fonction de leur pertinence, leur crédibilité et leur utilité pour son argumentation. Ce choix est déjà une démonstration de jugement disciplinaire — une sélection superficielle ou incohérente le révèle immédiatement.", "Pour chaque source retenue, l'étudiant rédige une annotation précisant ce qu'elle dit, pourquoi il l'a choisie et en quoi elle soutient ou nuance son argumentation. L'annotation doit être suffisamment spécifique pour qu'il soit impossible de la produire sans avoir réellement lu la source.", "L'étudiant explique comment chaque source s'articule avec sa propre thèse ou position — pas seulement ce qu'elle dit, mais ce qu'elle fait dans son raisonnement. Cette chaîne de liens est la trace la plus révélatrice de la pensée authentique."], "traces": "La liste annotée des sources avec liens actifs, et le document d'argumentation montrant explicitement les connexions vers chaque source.", "evalue": ["Le jugement disciplinaire — pour sélectionner des sources pertinentes et crédibles", "La pensée critique — pour annoter avec précision et honnêteté intellectuelle", "La capacité d'argumentation — pour tracer une chaîne de raisonnement cohérente et traçable", "L'authenticité de la démarche — pour démontrer une lecture réelle et non une compilation superficielle"]}, {"num": "9.2", "title": "Annotation comparative de sources contradictoires", "situation": "L'étudiant doit identifier et annoter des sources qui se contredisent ou se nuancent mutuellement sur un même sujet. Il doit ensuite expliquer comment il navigue entre ces positions pour construire sa propre argumentation. La complexité de cet exercice rend la délégation à l'IA détectable — une synthèse trop lisse trahit l'absence de véritable lecture.", "etapes": ["L'étudiant repère des sources qui défendent des positions différentes ou opposées sur le même sujet. Ce repérage démontre déjà une lecture suffisamment attentive pour saisir les nuances et les tensions dans le corpus.", "L'étudiant annote chaque source en précisant sa position, ses arguments principaux et ses limites. Il doit rendre visible la tension entre les sources — pas la résoudre prématurément.", "L'étudiant explique comment la confrontation entre les sources a façonné ou nuancé sa propre position, révélant ainsi une pensée qui a réellement traversé la complexité plutôt que de la contourner."], "traces": "Les sources annotées avec leurs positions respectives, et le texte expliquant comment la tension entre sources a nourri l'argumentation de l'étudiant.", "evalue": ["La pensée critique — pour naviguer entre des positions contradictoires sans simplification abusive", "La maîtrise du contenu disciplinaire — pour saisir les nuances et les enjeux d'un débat", "La capacité d'argumentation — pour construire une position personnelle à partir d'une confrontation de sources", "L'honnêteté intellectuelle — pour reconnaître la complexité plutôt que de la lisser"]}, {"num": "9.3", "title": "Journal de traçabilité du raisonnement", "situation": "Au fil de la construction de son argumentation, l'étudiant documente en temps réel les décisions intellectuelles qu'il prend : pourquoi retenir cette source plutôt qu'une autre, pourquoi changer de position, pourquoi écarter un argument. Ce journal rend la chaîne de raisonnement entièrement traçable et constitue une preuve d'authenticité difficile à falsifier.", "etapes": ["À chaque étape de sa recherche et de sa rédaction, l'étudiant note ses choix et les raisons qui les motivent. Ce journal n'est pas un résumé rédigé après coup — c'est une trace vivante horodatée qui accompagne la production.", "L'étudiant soumet son travail final accompagné du journal, en montrant explicitement comment certaines entrées se reflètent dans des décisions visibles dans le texte. Cette mise en relation rend la traçabilité du raisonnement concrète et vérifiable."], "traces": "Le journal de traçabilité horodaté, le travail final et le document reliant les entrées du journal aux décisions dans le texte.", "evalue": ["La métacognition — pour observer et documenter son propre processus de raisonnement", "La pensée critique — pour justifier des choix intellectuels en temps réel", "L'authenticité de la démarche — pour produire une trace que l'IA ne peut pas reconstituer rétrospectivement de façon crédible", "La littératie informationnelle — pour naviguer dans un corpus de sources avec rigueur et intentionnalité"]}]}, {"num": "10", "title": "Débat structuré (asynchrone et synchrone)", "approaches": [{"num": "10.1", "title": "Défense d'une position dans un fil de discussion", "situation": "L'étudiant est placé dans un contexte disciplinaire ou professionnel et doit défendre une position argumentée dans un fil de discussion en ligne. La position lui est assignée par l'enseignant — pas nécessairement celle qu'il aurait choisie — ce qui l'oblige à mobiliser ses compétences disciplinaires plutôt qu'à exprimer une opinion personnelle.", "etapes": ["L'étudiant formule une prise de position claire et argumentée, ancrée dans les concepts du cours. Cette entrée initiale doit être suffisamment développée pour être défendable — une position vague ne résistera pas aux réponses des pairs.", "L'étudiant reçoit la position d'un pair et doit y répondre dans un délai limité fixé par l'enseignant — quelques heures, pas plusieurs jours. Ce délai court est intentionnel : il rend la délégation à l'IA laborieuse et favorise une réponse authentique ancrée dans l'échange réel.", "À la lumière de la réponse reçue, l'étudiant revient sur sa position : la maintient-il? La nuance-t-il? La reformule-t-il? Cette évolution — ou cette résistance argumentée — est une trace de pensée disciplinaire authentique."], "traces": "Le fil de discussion complet avec horodatage, la position initiale, les réponses échangées et la réflexion finale sur l'évolution de la position.", "evalue": ["La maîtrise du contenu disciplinaire — pour défendre une position avec des arguments fondés", "La pensée critique — pour analyser la position d'un pair et y répondre avec rigueur", "La capacité d'adaptation — pour faire évoluer sa position sous la pression des arguments", "L'authenticité de l'échange — pour démontrer une pensée qui réagit en contexte et en temps réel"]}, {"num": "10.2", "title": "Débat par rôles assignés", "situation": "L'enseignant assigne à chaque étudiant un rôle disciplinaire ou professionnel spécifique — un acteur, une partie prenante, un expert — et chaque étudiant défend la position de ce rôle dans le fil de discussion. Le caractère situé et contraint du rôle rend la réponse générique de l'IA immédiatement détectable.", "etapes": ["L'étudiant prend connaissance de son rôle et de ses caractéristiques : qui est cet acteur, quels sont ses intérêts, ses contraintes, sa perspective sur le sujet en débat. Cette appropriation est elle-même une démonstration de compréhension du contexte disciplinaire.", "L'étudiant rédige une entrée initiale qui reflète fidèlement la perspective de son rôle. La cohérence entre le rôle assigné et les arguments avancés est évaluée — une réponse générique qui ne tient pas compte du rôle le trahit.", "L'étudiant répond à l'entrée d'un pair en restant dans son propre rôle. L'interaction entre deux rôles distincts crée une dynamique contextuelle que l'IA ne peut pas simuler sans connaître le fil complet de l'échange.", "En dehors du fil de discussion, l'étudiant rédige une courte réflexion personnelle : en quoi défendre ce rôle a-t-il éclairé ou challengé sa propre compréhension du sujet? Cette sortie de rôle est la trace la plus personnelle et la plus difficile à déléguer."], "traces": "Le fil de discussion complet avec horodatage, la description du rôle assigné et le texte réflexif hors rôle.", "evalue": ["La connaissance du contexte disciplinaire ou professionnel — pour incarner un rôle de façon crédible", "La pensée critique — pour argumenter depuis une perspective contrainte et répondre à une perspective opposée", "La métacognition — pour réfléchir sur ce que le jeu de rôle a révélé de sa propre compréhension"]}, {"num": "10.3", "title": "Synthèse critique du débat", "situation": "À la suite d'un débat asynchrone entre plusieurs étudiants, chaque participant produit une synthèse critique de l'ensemble du fil de discussion. Cette synthèse n'est pas un résumé — c'est une analyse des positions en présence, des arguments les plus solides et des zones de tension non résolues. Elle ne peut être produite qu'en ayant réellement suivi et compris l'échange.", "etapes": ["L'étudiant relit l'ensemble du débat et l'annote : quels arguments ont fait avancer la discussion, lesquels sont restés sans réponse, où les positions ont évolué et pourquoi.", "L'étudiant produit sa synthèse en identifiant les lignes de fracture du débat, les arguments les plus solides de chaque côté et ce qui resterait à résoudre si le débat devait continuer. La qualité de cette synthèse dépend directement de la profondeur de sa lecture du fil."], "traces": "Le fil de discussion annoté et la synthèse critique rédigée par l'étudiant.", "evalue": ["La pensée critique — pour analyser un échange complexe sans le simplifier", "La maîtrise du contenu disciplinaire — pour évaluer la solidité des arguments en présence", "La capacité de synthèse — pour dégager les enjeux essentiels d'un débat sans les aplatir", "L'authenticité de la démarche — pour démontrer une lecture réelle et attentive de l'échange"]}, {"num": "10.4", "title": "Débat en temps réel en classe ou en visioconférence", "situation": "L'enseignant organise un débat structuré en direct — en classe ou en visioconférence — dans lequel les étudiants défendent des positions assignées devant leurs pairs. L'immédiateté de l'échange, les relances imprévisibles et la présence des autres rendent toute délégation à l'IA impossible en temps réel.", "etapes": ["L'étudiant reçoit sa position assignée avant la séance et prépare ses arguments. Il peut utiliser toutes les ressources disponibles, y compris l'IA — mais c'est lui qui devra les défendre en direct, sans filet.", "En séance, l'étudiant présente sa position et répond aux questions et contre-arguments de ses pairs et de l'enseignant. La spontanéité des échanges révèle la profondeur réelle de sa préparation.", "L'étudiant répond en temps réel aux arguments des autres participants. Cette réaction à chaud — sans temps de préparation — est la trace la plus authentique de sa maîtrise du contenu.", "Immédiatement après la séance, l'étudiant rédige une courte réflexion : quel argument adverse l'a le plus ébranlé? Qu'aurait-il répondu différemment avec plus de temps? Cette réflexion à chaud est difficile à fabriquer de façon crédible après coup."], "traces": "La préparation soumise avant la séance, les notes de l'enseignant sur la participation en direct, et la réflexion post-débat horodatée.", "evalue": ["La maîtrise du contenu disciplinaire — pour défendre une position sous pression et sans support", "La pensée critique — pour réagir en temps réel à des arguments imprévus", "La capacité d'adaptation — pour ajuster son raisonnement face à des contre-arguments inattendus", "L'authenticité des apprentissages — pour démontrer une préparation en profondeur qui tient sous la pression"]}, {"num": "10.5", "title": "Observation et intervention en direct (fish bowl)", "situation": "Un petit groupe d'étudiants débat en direct au centre — le fish bowl — pendant que les autres observent. À tout moment, un observateur peut remplacer un participant actif en frappant dans ses mains ou en se levant. Ce format hybride combine l'observation critique et la participation spontanée, rendant toute préparation de réponse toute faite inutile.", "etapes": ["Les étudiants en observation suivent le débat attentivement et prennent des notes : quels arguments sont solides, lesquels sont vulnérables, quelles ouvertures ne sont pas exploitées. Cette observation active prépare l'intervention sans la scripter.", "L'étudiant choisit le moment où il entre dans le débat — ce choix est lui-même stratégique. Il doit s'insérer dans l'échange en cours, pas recommencer depuis le début, révélant ainsi sa capacité à lire une situation en temps réel.", "Après la séance, chaque étudiant — qu'il ait beaucoup ou peu participé — rédige une analyse du débat : quelles positions ont été les mieux défendues, quels arguments auraient pu être contredits, ce que l'échange a révélé sur le sujet. Cette analyse ancre l'observation dans une réflexion disciplinaire."], "traces": "Les notes d'observation prises pendant la séance, les notes de l'enseignant sur les interventions, et l'analyse post-séance de chaque étudiant.", "evalue": ["La pensée critique — pour observer un échange et identifier ses forces et ses failles en temps réel", "Le jugement stratégique — pour choisir le bon moment et le bon angle d'intervention", "La maîtrise du contenu disciplinaire — pour s'insérer dans un débat en cours avec pertinence", "L'authenticité de la démarche — pour démontrer une compréhension active plutôt que passive"]}]}, {"num": "11", "title": "Scénario de prise de décision professionnelle", "approaches": [{"num": "11.1", "title": "Décision sous contraintes multiples", "situation": "L'étudiant est placé dans une situation professionnelle réaliste et complexe, propre à son domaine, dans laquelle il doit prendre une décision en tenant compte de contraintes simultanées — ressources limitées, enjeux éthiques, public cible précis, délais serrés. La complexité du scénario est intentionnelle : une réponse générique de l'IA ne peut pas tenir compte de l'ensemble des contraintes sans que l'étudiant ne les ait lui-même intégrées et arbitrées.", "etapes": ["L'étudiant lit attentivement la situation et identifie toutes les contraintes en jeu : lesquelles sont négociables, lesquelles sont fixes, lesquelles entrent en tension les unes avec les autres. Cette cartographie révèle déjà la profondeur de sa lecture professionnelle.", "L'étudiant se prononce — il choisit une option, une direction, un plan d'action. L'indécision ou la réponse qui esquive le choix est elle-même un signal évaluable. Une décision professionnelle exige de trancher, pas de lister des possibilités.", "L'étudiant explique sa décision en montrant explicitement comment chaque contrainte du scénario a influencé son choix. Une justification qui ignore une contrainte majeure révèle une lecture incomplète de la situation.", "L'étudiant nomme ce à quoi il renonce en choisissant cette option et les risques que sa décision comporte. Cette reconnaissance des compromis est une marque de maturité professionnelle que l'IA tend à lisser ou à éviter."], "traces": "La cartographie des contraintes, la décision énoncée, la justification argumentée et l'analyse des compromis acceptés.", "evalue": ["Le jugement professionnel — pour prendre une décision éclairée dans un contexte complexe", "La maîtrise du contenu disciplinaire — pour mobiliser les bons outils d'analyse face à la situation", "La pensée critique — pour arbitrer entre des contraintes qui s'opposent", "L'authenticité de la démarche — pour démontrer une décision réellement pesée et non générée"]}, {"num": "11.2", "title": "Comparaison de scénarios avec recommandation argumentée", "situation": "L'enseignant soumet deux ou trois variantes d'un même scénario professionnel — chacune avec un ensemble de contraintes légèrement différent. L'étudiant doit analyser chaque variante, les comparer et recommander laquelle appelle la meilleure décision dans le contexte donné. La comparaison force une lecture fine des nuances entre les situations.", "etapes": ["L'étudiant examine chaque scénario séparément avant de les comparer. Cette étape évite les raccourcis — une analyse bâclée de l'une des variantes se voit immédiatement dans la comparaison.", "L'étudiant met en relation les variantes : en quoi diffèrent-elles? Quelles contraintes changent d'une variante à l'autre et qu'est-ce que cela implique pour la décision à prendre?", "L'étudiant se prononce sur la variante qui appelle la meilleure décision et justifie son choix. La recommandation doit être ancrée dans la comparaison — pas dans une préférence arbitraire."], "traces": "L'analyse de chaque variante, le tableau ou texte comparatif et la recommandation argumentée.", "evalue": ["Le jugement analytique — pour comparer des situations complexes avec rigueur", "La maîtrise du contenu disciplinaire — pour identifier les enjeux propres à chaque variante", "La capacité de décision — pour se prononcer et justifier un choix dans un contexte nuancé"]}, {"num": "11.3", "title": "Simulation de conseil professionnel", "situation": "L'étudiant joue le rôle d'un conseiller ou d'un expert consulté par un client ou une organisation fictive confrontée à une décision complexe. Il doit produire une recommandation professionnelle formelle — pas une réflexion personnelle, mais un avis structuré destiné à être actionnable par le destinataire.", "etapes": ["L'étudiant prend connaissance du mandat confié par le client fictif. Si des informations semblent manquantes ou ambiguës, il les signale explicitement et formule les hypothèses qu'il retiendra — une compétence professionnelle à part entière.", "L'étudiant rédige son avis professionnel dans le format approprié au domaine : note de service, rapport synthèse, plan d'action, avis consultatif. La forme est évaluée autant que le fond — un professionnel sait adapter son format à son destinataire.", "L'étudiant identifie les objections que le client pourrait soulever face à sa recommandation et y répond de façon préventive. Cette anticipation révèle une compréhension fine du contexte et du destinataire — deux dimensions que l'IA ne peut pas simuler sans les informations que seul l'étudiant possède."], "traces": "Le mandat reçu, les hypothèses formulées, la recommandation formelle et les réponses aux objections anticipées.", "evalue": ["Le jugement professionnel — pour produire un avis structuré et actionnable", "La maîtrise du contenu disciplinaire — pour formuler une recommandation techniquement solide", "La connaissance du contexte professionnel — pour adapter le format et le ton au destinataire", "La pensée critique — pour anticiper les limites et les objections de sa propre recommandation"]}, {"num": "11.4", "title": "Retour réflexif sur une décision passée", "situation": "L'étudiant est invité à revenir sur une décision professionnelle ou quasi-professionnelle qu'il a réellement prise — en stage, en emploi, dans un projet de cours — et à l'analyser rétrospectivement avec les outils du cours. Ce retour ancre l'évaluation dans un vécu que l'IA ne peut pas posséder.", "etapes": ["L'étudiant raconte la situation : quelles étaient les contraintes, quelles options s'offraient à lui, ce qu'il a choisi et pourquoi à ce moment-là. La description doit être suffisamment précise pour ancrer l'analyse qui suit.", "L'étudiant applique les cadres d'analyse du cours à sa propre décision passée : était-elle fondée? Quelles contraintes a-t-il bien pesées? Lesquelles a-t-il sous-estimées ou ignorées?", "Fort de ses apprentissages, l'étudiant se prononce sur ce qu'il changerait aujourd'hui. Cette projection vers une décision améliorée est la synthèse la plus révélatrice de ce que le cours lui a réellement apporté."], "traces": "La description de la décision passée, l'analyse mobilisant les outils du cours et la réflexion sur ce qui serait fait différemment.", "evalue": ["La métacognition — pour analyser ses propres décisions avec honnêteté et distance critique", "La maîtrise du contenu disciplinaire — pour appliquer les outils du cours à une situation réelle", "Le développement de l'identité professionnelle — pour mesurer l'écart entre la décision passée et la décision éclairée", "L'authenticité du vécu — pour ancrer l'analyse dans une expérience que seul l'étudiant possède"]}]}, {"num": "12", "title": "Reformulation dans un nouveau registre", "approaches": [{"num": "12.1", "title": "Explication écrite pour un public non-expert", "situation": "L'étudiant doit expliquer un concept complexe de son domaine à un destinataire non-expert — un enfant, un parent, un client sans formation spécialisée. L'exercice n'est pas une simplification arbitraire : c'est une démonstration que l'étudiant maîtrise suffisamment le concept pour en extraire l'essentiel et le rendre accessible sans le trahir.", "etapes": ["Avant d'écrire, l'étudiant détermine ce que le destinataire doit absolument comprendre — et ce qu'il peut laisser de côté sans déformer le concept. Cette sélection est elle-même une démonstration de maîtrise : on ne peut pas choisir ce qui est essentiel sans comprendre ce qui est accessoire.", "L'étudiant produit son explication en adaptant le vocabulaire, les exemples et la structure au profil précis du destinataire assigné. Une explication générique non ancrée dans le destinataire cible révèle une reformulation de surface.", "L'étudiant explique les décisions qu'il a prises : pourquoi cette analogie plutôt qu'une autre, pourquoi cet exemple concret, ce qu'il a délibérément omis et pourquoi. Cette justification est la trace la plus révélatrice de la profondeur de sa compréhension."], "traces": "Le texte de reformulation, la justification des choix et la description du destinataire ciblé.", "evalue": ["La maîtrise du contenu disciplinaire — pour identifier ce qui est essentiel et ce qui est accessoire", "La compétence communicationnelle — pour adapter un message à un destinataire précis", "La métacognition — pour expliquer et justifier ses propres choix de reformulation"]}, {"num": "12.2", "title": "Explication en vidéo ou en audio", "situation": "L'étudiant produit un enregistrement dans lequel il explique un concept complexe à un public non-expert. Le format oral ajoute une contrainte supplémentaire — il ne peut pas se cacher derrière une formulation soigneusement polie, et la spontanéité de l'explication révèle ce qu'il a réellement intégré.", "etapes": ["L'étudiant prépare ses idées principales sans rédiger un script mot à mot. Un enregistrement lu mot à mot trahit une compréhension de surface — l'enseignant peut demander à l'étudiant de répondre à une question imprévue à la fin pour le vérifier.", "L'étudiant produit son enregistrement en s'adressant directement au destinataire ciblé, selon le format approprié :Vidéo face caméra (smartphone, webcam) ; Vidéo avec support visuel (PowerPoint narré) ; Audio seul (Voice Memos, Audacity)", "L'enseignant visionne ou écoute l'enregistrement et soumet une question de suivi à laquelle l'étudiant doit répondre dans un court délai. Cette question cible un aspect que l'explication n'a pas couvert ou qu'elle a effleuré — elle verrouille l'authenticité de la compréhension démontrée."], "traces": "Le fichier audio ou vidéo et la réponse écrite ou enregistrée à la question de suivi.", "evalue": ["La maîtrise du contenu disciplinaire — pour expliquer avec clarté et précision sans support écrit", "La compétence communicationnelle — pour adapter son registre oral à un destinataire non-expert", "L'authenticité des apprentissages — pour démontrer une compréhension qui tient sous la question imprévue"]}, {"num": "12.3", "title": "Reformulation comparative entre deux registres", "situation": "L'étudiant doit produire deux versions d'une même explication — une pour un pair du domaine, une pour un non-expert — et analyser les différences entre les deux. Cette double reformulation révèle non seulement sa maîtrise du concept, mais aussi sa conscience des codes et des attentes propres à chaque registre.", "etapes": ["L'étudiant rédige ou enregistre ses deux explications, en veillant à ce qu'elles soient toutes deux fidèles au concept — l'une ne peut pas sacrifier la rigueur au profit de la simplicité, ni l'autre noyer l'essentiel dans le jargon.", "L'étudiant produit une analyse comparative : quels éléments sont présents dans la version experte et absents dans la version non-experte, et pourquoi? Quelles analogies ou quels exemples a-t-il introduits pour l'un et pas pour l'autre? Cette analyse est le cœur de l'évaluation."], "traces": "Les deux versions produites et l'analyse comparative des choix de reformulation.", "evalue": ["La maîtrise approfondie du contenu disciplinaire — pour produire deux versions rigoureuses à des niveaux différents", "La conscience des registres — pour adapter son discours sans trahir le concept", "La métacognition — pour analyser explicitement ce que chaque registre exige et pourquoi"]}, {"num": "12.4", "title": "Reformulation soumise à un vrai non-expert", "situation": "L'étudiant produit son explication, puis la soumet à un vrai non-expert — un proche, un camarade d'un autre programme, un membre de la communauté — qui confirme si l'explication était compréhensible. Le retour du non-expert devient une trace d'évaluation à part entière. C'est l'une des rares approches où la validation vient de l'extérieur de la relation enseignant-étudiant.", "etapes": ["L'étudiant rédige ou enregistre son explication destinée au non-expert ciblé, selon les mêmes exigences que les approches précédentes.", "Le non-expert lit ou visionne l'explication et répond à quelques questions simples posées par l'étudiant : qu'est-ce qu'il a compris, qu'est-ce qui restait flou, quelle partie lui a semblé la plus claire. Ce retour est remis à l'enseignant avec l'explication.", "L'étudiant analyse le retour du non-expert : qu'est-ce que cela révèle sur son explication? Qu'aurait-il reformulé différemment? Cette réflexion sur l'écart entre l'intention et la réception est particulièrement révélatrice."], "traces": "L'explication produite, le retour écrit ou enregistré du non-expert et la réflexion de l'étudiant sur ce retour.", "evalue": ["La maîtrise du contenu disciplinaire — pour produire une explication fidèle et accessible", "La compétence communicationnelle — pour évaluer l'efficacité réelle de sa reformulation", "La métacognition — pour analyser l'écart entre ce qu'on croit avoir expliqué et ce qui a été compris", "L'authenticité de la démarche — pour ancrer l'évaluation dans une interaction réelle avec un destinataire réel"]}]}]
+</script>
+<script>
+(function(){
+  var DATA = JSON.parse(document.getElementById('strategyData').textContent);
+  var PALETTE = ['#00587c','#eb2d37','#685ef7','#cc9f11','#5b8000','#fe6c06',
+                 '#d485fa','#00435e','#993030','#cdc19e','#f2f537','#9cf6d4'];
+
+  function textColorFor(hex){
+    var c = hex.replace('#','');
+    var r = parseInt(c.substring(0,2),16), g = parseInt(c.substring(2,4),16), b = parseInt(c.substring(4,6),16);
+    var lum = (0.299*r + 0.587*g + 0.114*b) / 255;
+    return lum > 0.62 ? '#07181e' : '#ffffff';
+  }
+  function paleColor(hex){
+    // blend the color 50% toward white, so it reads as the same hue at half intensity
+    var c = hex.replace('#','');
+    var r = parseInt(c.substring(0,2),16), g = parseInt(c.substring(2,4),16), b = parseInt(c.substring(4,6),16);
+    var pr = Math.round(r + (255-r)*0.5);
+    var pg = Math.round(g + (255-g)*0.5);
+    var pb = Math.round(b + (255-b)*0.5);
+    return 'rgb('+pr+','+pg+','+pb+')';
+  }
+  function escapeHTML(s){
+    return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+  function el(tag, cls, html){
+    var e = document.createElement(tag);
+    if(cls) e.className = cls;
+    if(html !== undefined) e.innerHTML = html;
+    return e;
+  }
+
+  var iconMap = {
+    situation: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 3L3 9L12 15L21 9L12 3Z" stroke="#00587c" stroke-width="2" stroke-linejoin="round"/><path d="M7 12.5V17C7 17 9 19 12 19C15 19 17 17 17 17V12.5" stroke="#00587c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    etapes: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="5" cy="6" r="1.6" fill="#00587c"/><circle cx="5" cy="12" r="1.6" fill="#00587c"/><circle cx="5" cy="18" r="1.6" fill="#00587c"/><path d="M10 6H20M10 12H20M10 18H20" stroke="#00587c" stroke-width="2" stroke-linecap="round"/></svg>',
+    traces: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="#00587c" stroke-width="2"/><path d="M8 8H16M8 12H16M8 16H12" stroke="#00587c" stroke-width="2" stroke-linecap="round"/></svg>',
+    evalue: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="#00587c" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="#00587c" stroke-width="2"/><circle cx="12" cy="12" r="0.8" fill="#00587c"/></svg>'
+  };
+
+  var listEl = document.getElementById('strategiesList');
+  var strategyCards = [], headerButtons = [], approachLists = [], approachItems = [];
+
+  DATA.forEach(function(s, i){
+    var color = PALETTE[i % PALETTE.length];
+    var paled = paleColor(color);
+    var textColor = '#07181e';
+
+    var card = el('div','strategy-card');
+    card.dataset.search = s.title.toLowerCase();
+
+    var header = el('button','strategy-header');
+    header.type = 'button';
+    header.style.background = paled;
+    header.style.color = textColor;
+    header.innerHTML =
+      '<span class="num-badge">'+s.num+'</span>'+
+      '<span class="title">'+escapeHTML(s.title)+'</span>'+
+      '<span class="count">'+s.approaches.length+' approche'+(s.approaches.length>1?'s':'')+'</span>'+
+      '<svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="'+textColor+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    card.appendChild(header);
+
+    var approachList = el('div','approach-list');
+    card.appendChild(approachList);
+
+    s.approaches.forEach(function(a, j){
+      var item = el('button','approach-item');
+      item.type = 'button';
+      item.dataset.strategy = i;
+      item.dataset.approach = j;
+      item.dataset.search = (a.title + ' ' + a.situation).toLowerCase();
+      item.innerHTML =
+        '<span class="approach-num" style="background:'+paled+';color:#07181e">'+a.num+'</span>'+
+        '<span class="approach-text">'+
+          '<span class="approach-title">'+escapeHTML(a.title)+'</span>'+
+          '<span class="approach-snippet">'+escapeHTML(a.situation)+'</span>'+
+        '</span>'+
+        '<svg class="approach-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="#576266" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      approachList.appendChild(item);
+      approachItems.push(item);
+
+      item.addEventListener('click', function(ev){
+        ev.stopPropagation();
+        openFiche(i, j);
+      });
+    });
+
+    header.addEventListener('click', function(){ toggleStrategy(i); });
+
+    listEl.appendChild(card);
+    strategyCards.push(card);
+    headerButtons.push(header);
+    approachLists.push(approachList);
+  });
+
+  function toggleStrategy(i, forceState){
+    var header = headerButtons[i];
+    var list = approachLists[i];
+    var card = strategyCards[i];
+    var willOpen = forceState !== undefined ? forceState : !header.classList.contains('expanded');
+    header.classList.toggle('expanded', willOpen);
+    card.classList.toggle('expanded', willOpen);
+    if(willOpen){
+      list.style.maxHeight = list.scrollHeight + 'px';
+    } else {
+      list.style.maxHeight = '0px';
+    }
+  }
+
+  // keep expanded lists sized correctly if content reflows (e.g. window resize)
+  window.addEventListener('resize', function(){
+    headerButtons.forEach(function(h,i){
+      if(h.classList.contains('expanded')){
+        approachLists[i].style.maxHeight = approachLists[i].scrollHeight + 'px';
+      }
+    });
+  });
+
+  document.getElementById('expandAllBtn').addEventListener('click', function(){
+    strategyCards.forEach(function(_,i){ toggleStrategy(i, true); });
+  });
+  document.getElementById('collapseAllBtn').addEventListener('click', function(){
+    strategyCards.forEach(function(_,i){ toggleStrategy(i, false); });
+  });
+
+  // ---------- fiche modal ----------
+  var backdrop = document.getElementById('modalBackdrop');
+  var ficheHead = document.getElementById('ficheHead');
+  var ficheEyebrow = document.getElementById('ficheEyebrow');
+  var ficheTitle = document.getElementById('ficheTitle');
+  var ficheBody = document.getElementById('ficheBody');
+
+  function paraHTML(t){ return '<p>'+escapeHTML(t)+'</p>'; }
+  function listHTML(items){ return '<ol>'+items.map(function(t){return '<li>'+escapeHTML(t)+'</li>';}).join('')+'</ol>'; }
+  function bulletHTML(items){ return '<ul>'+items.map(function(t){return '<li>'+escapeHTML(t)+'</li>';}).join('')+'</ul>'; }
+
+  function ficheSection(iconKey, label, contentHTML){
+    return '<div class="fiche-section">'+
+      '<span class="fiche-icon">'+iconMap[iconKey]+'</span>'+
+      '<div class="fiche-section-body">'+
+        '<div class="fiche-section-label">'+label+'</div>'+
+        '<div class="fiche-section-content">'+contentHTML+'</div>'+
+      '</div>'+
+    '</div>';
+  }
+
+  function openFiche(i, j){
+    var s = DATA[i], a = s.approaches[j];
+    var color = PALETTE[i % PALETTE.length];
+    ficheHead.style.background = color;
+    ficheEyebrow.style.color = textColorFor(color) === '#ffffff' ? 'rgba(255,255,255,.85)' : 'rgba(7,24,30,.65)';
+    ficheTitle.style.color = textColorFor(color);
+    document.getElementById('ficheClose').querySelector('path').setAttribute('stroke', textColorFor(color));
+    ficheEyebrow.textContent = 'Stratégie '+s.num+' · Approche '+a.num;
+    ficheTitle.textContent = a.title;
+    ficheBody.innerHTML =
+      ficheSection('situation','Mise en situation', paraHTML(a.situation)) +
+      '<hr class="fiche-divider">' +
+      ficheSection('etapes','Étapes', listHTML(a.etapes)) +
+      '<hr class="fiche-divider">' +
+      ficheSection('traces','Traces à collecter', paraHTML(a.traces)) +
+      '<hr class="fiche-divider">' +
+      ficheSection('evalue','Ce que ça évalue', bulletHTML(a.evalue));
+    backdrop.classList.add('open');
+  }
+  function closeFiche(){ backdrop.classList.remove('open'); }
+  document.getElementById('ficheClose').addEventListener('click', closeFiche);
+  backdrop.addEventListener('click', function(e){ if(e.target === backdrop) closeFiche(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeFiche(); });
+
+  // ---------- search ----------
+  var searchInput = document.getElementById('searchInput');
+  var noMatchBanner = document.getElementById('noMatchBanner');
+
+  searchInput.addEventListener('input', function(){
+    var q = searchInput.value.trim().toLowerCase();
+    var anyMatch = false;
+    strategyCards.forEach(function(card, i){
+      var stratMatch = !q || card.dataset.search.indexOf(q) !== -1;
+      var childMatch = false;
+      approachItems.forEach(function(chip){
+        if(parseInt(chip.dataset.strategy,10) !== i) return;
+        var m = !q || chip.dataset.search.indexOf(q) !== -1;
+        if(m) childMatch = true;
+        chip.classList.toggle('dim', !!q && !m);
+      });
+      var show = !q || stratMatch || childMatch;
+      if(show) anyMatch = true;
+      card.style.display = show ? '' : 'none';
+      if(q && childMatch){ toggleStrategy(i, true); }
+    });
+    noMatchBanner.classList.toggle('show', !!q && !anyMatch);
+  });
+
+})();
+</script>
+</body>
+</html>
